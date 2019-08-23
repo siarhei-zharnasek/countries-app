@@ -1,25 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import styled from 'styled-components';
+
+import Main from './components/Main';
+import Navigation from './components/Navigation';
+import Countries from './components/Countries';
+
+const StyledWrapper = styled.div`
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+`;
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
+        <StyledWrapper>
+            <Router>
+                <Fragment>
+                    <Navigation />
+                    <Route
+                        path="/"
+                        component={Main}
+                        exact
+                    />
+                    <Route
+                        path="/countries"
+                        component={Countries}
+                        exact
+                    />
+                </Fragment>
+            </Router>
+        </StyledWrapper>
     );
 }
 
