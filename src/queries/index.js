@@ -1,5 +1,7 @@
 import { gql } from 'apollo-boost';
 
-import countries from './countries';
+import countriesList from './countriesList';
+import getSingleCountry from './getSingleCountry';
 
-export const countriesQuery = gql(countries);
+export const countriesListQuery = gql(countriesList);
+export const getSingleCountryQuery = code => gql(getSingleCountry(code));

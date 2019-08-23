@@ -3,20 +3,20 @@ import styled from 'styled-components';
 import { useQuery } from '@apollo/react-hooks';
 
 // queries
-import { countriesQuery } from '../queries';
+import { countriesListQuery } from '../../queries';
 
 // components
 import Country from './Country';
 
-const StyledCountries = styled.div`
+const StyledCountriesList = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 `;
 
-const Countries = () => {
-    const { loading, error, data: { countries = [] } = {} } = useQuery(countriesQuery);
+const CountriesList = () => {
+    const { loading, error, data: { countries = [] } = {} } = useQuery(countriesListQuery);
 
     if (loading) {
         return (
@@ -25,18 +25,19 @@ const Countries = () => {
     }
 
     return (
-        <StyledCountries>
-            {countries.map(({ name, native, languages, continent = {} }) => (
+        <StyledCountriesList>
+            {countries.map(({ name, native, languages, continent = {}, code }) => (
                 <Country
                     key={name}
                     name={name}
                     native={native}
                     languages={languages}
                     continentName={continent.name}
+                    code={code}
                 />
             ))}
-        </StyledCountries>
+        </StyledCountriesList>
     );
 };
 
-export default Countries;
+export default CountriesList;

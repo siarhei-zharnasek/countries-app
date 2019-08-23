@@ -6,10 +6,12 @@ import { ApolloProvider } from '@apollo/react-hooks';
 // components
 import Main from './components/Main';
 import Navigation from './components/Navigation';
-import Countries from './components/Countries';
+import CountriesList from './components/CountriesList/CountriesList';
+import CountryView from './components/CountryView';
 
 // utils
 import client from './utils/apolloClient';
+import routes from './utils/routes';
 
 const StyledWrapper = styled.div`
     max-width: 1400px;
@@ -32,8 +34,13 @@ function App() {
                                 exact
                             />
                             <Route
-                                path="/countries"
-                                component={Countries}
+                                path={routes.countries}
+                                component={CountriesList}
+                                exact
+                            />
+                            <Route
+                                path={routes.country}
+                                component={CountryView}
                                 exact
                             />
                         </Switch>

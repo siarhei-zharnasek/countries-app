@@ -1,7 +1,13 @@
 import React  from 'react';
 import styled from 'styled-components';
 
-const StyledCountry = styled.div`
+// components
+import Link from '../Link';
+
+// utils
+import routes from '../../utils/routes';
+
+const StyledCountry = styled(Link)`
     display: flex;
 `;
 const StyledName = styled.span`
@@ -18,8 +24,8 @@ const StyledContinentName = styled.span`
     margin-left: 20px;
 `;
 
-const Country = ({ name, native, languages = [], continentName }) => (
-    <StyledCountry>
+const Country = ({ name, native, languages = [], continentName, code }) => (
+    <StyledCountry to={`${routes.countries}/${code}`}>
         <StyledName>{name}</StyledName>
         <span>/</span>
         <StyledNativeName>{native}</StyledNativeName>
