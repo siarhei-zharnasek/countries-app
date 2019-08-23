@@ -1,5 +1,12 @@
 import React  from 'react';
 import styled from 'styled-components';
+import { useQuery } from '@apollo/react-hooks';
+
+// queries
+import { countriesQuery } from '../queries';
+
+// components
+import Country from './Country';
 
 const StyledCountries = styled.div`
     display: flex;
@@ -8,14 +15,28 @@ const StyledCountries = styled.div`
     align-items: flex-start;
 `;
 
-const Country = ({ name }) => name;
+const Countries = () => {
+    const { loading, error, data: { countries = [] } = {} } = useQuery(countriesQuery);
 
-const Countries = ({ countries = [] }) => (
-    <StyledCountries>
-        {countries.map(itemData => (
-            <Country {...itemData} />
-        ))}
-    </StyledCountries>
-);
+    if (loading) {
+        return (
+            <div>Loading...</div>
+        );
+    }
+
+    return (
+        <StyledCountries>
+            {countries.map(({ name, native, languages, continent = {} }) => (
+                <Country
+                    key={name}
+                    name={name}
+                    native={native}
+                    languages={languages}
+                    continentName={continent.name}
+                />
+            ))}
+        </StyledCountries>
+    );
+};
 
 export default Countries;
