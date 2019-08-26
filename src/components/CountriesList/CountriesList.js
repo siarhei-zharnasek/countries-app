@@ -7,6 +7,7 @@ import { countriesListQuery } from '../../queries';
 
 // components
 import Country from './Country';
+import Loader from '../Loader';
 
 const StyledCountriesList = styled.div`
     display: flex;
@@ -18,9 +19,7 @@ const CountriesList = () => {
     const { loading, error, data: { countries = [] } = {} } = useQuery(countriesListQuery);
 
     if (loading) {
-        return (
-            <div>Loading...</div>
-        );
+        return <Loader />;
     }
 
     return (
