@@ -34,6 +34,7 @@ const StyledNativeName = styled.span`
 const StyledContent = styled.div`
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 `;
 const StyledLanguage = styled.span`
     margin-right: 10px;
