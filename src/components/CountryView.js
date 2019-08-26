@@ -5,12 +5,13 @@ import { useQuery } from '@apollo/react-hooks';
 // queries
 import { getSingleCountryQuery } from '../queries';
 
-const StyledCountryView = styled.div`
-    display: flex;
-`;
-const StyledCountryViewTitle = styled.h1`
+const StyledTitle = styled.span`
     font-size: 36px;
     margin-top: 0;
+`;
+const StyledSubTitle = styled.span`
+    margin-right: 10px;
+    font-weight: 100;
 `;
 
 const CountryView = ({ match }) => {
@@ -28,15 +29,21 @@ const CountryView = ({ match }) => {
     }
 
     const { name, native, currency, phone } = country;
+    const renderBlock = (subTitle, title) => (
+        <div>
+            <StyledSubTitle>{subTitle}</StyledSubTitle>
+            <StyledTitle>
+                {title || '-'}
+            </StyledTitle>
+        </div>
+    );
 
     return (
         <div>
-            <StyledCountryViewTitle>
-                {`${name} - ${native}`}
-            </StyledCountryViewTitle>
-            <StyledCountryView>
-                {`${currency} (${phone})`}
-            </StyledCountryView>
+            {renderBlock('Country name (in English):', name)}
+            {renderBlock('Country name:', native)}
+            {renderBlock('Currency:', currency)}
+            {renderBlock('Phone code:', phone)}
         </div>
     );
 };
