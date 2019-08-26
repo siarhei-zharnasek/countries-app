@@ -7,7 +7,9 @@ const StyledNavigation = styled.div`
     display: flex;
     flex-direction: column;
     margin-right: 50px;
-    min-width: 100px;
+    min-width: 200px;
+    min-height: 100%;
+    border-right: 1px solid #e2e2e2;
 `;
 
 const Navigation = () => (

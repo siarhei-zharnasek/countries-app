@@ -10,9 +10,8 @@ import Country from './Country';
 
 const StyledCountriesList = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
 `;
 
 const CountriesList = () => {
@@ -32,7 +31,7 @@ const CountriesList = () => {
                     name={name}
                     native={native}
                     languages={languages}
-                    continentName={continent.name}
+                    continent={continent}
                     code={code}
                 />
             ))}

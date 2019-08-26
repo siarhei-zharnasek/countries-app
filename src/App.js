@@ -16,8 +16,10 @@ import routes from './utils/routes';
 const StyledWrapper = styled.div`
     max-width: 1400px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
+    width: 80vw;
+    margin-top: 50px;
 `;
 
 function App() {

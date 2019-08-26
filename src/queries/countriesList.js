@@ -8,6 +8,7 @@ export default `
             phone
             continent {
                 name
+                code
             }
             languages {
                 code
