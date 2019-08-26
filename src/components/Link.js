@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const StyledLink = styled(Link)`
     text-decoration: none;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: ${props => props.nested ? "hidden" : "visible"};
     text-overflow: ellipsis;
     margin-left: ${props => props.nested ? "15px" : 0};
     font-size: ${props => props.nested ? "14px" : "inherit"};
