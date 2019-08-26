@@ -8,6 +8,7 @@ import { countriesListQuery } from '../../queries';
 // components
 import Country from './Country';
 import Loader from '../Loader';
+import Error from '../Error';
 
 const StyledCountriesList = styled.div`
     display: flex;
@@ -20,6 +21,10 @@ const CountriesList = () => {
 
     if (loading) {
         return <Loader />;
+    }
+
+    if (error) {
+        return <Error />;
     }
 
     return (

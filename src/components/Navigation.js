@@ -8,6 +8,7 @@ import { countriesNamesQuery } from '../queries';
 // components
 import StyledLink from './Link';
 import Loader from './Loader';
+import Error from './Error';
 
 // utils
 import routes from '../utils/routes';
@@ -24,6 +25,10 @@ const StyledNavigation = styled.div`
 
 const Navigation = () => {
     const { loading, error, data: { countries = [] } = {} } = useQuery(countriesNamesQuery);
+
+    if (error) {
+        return <Error />;
+    }
 
     return (
         <StyledNavigation>

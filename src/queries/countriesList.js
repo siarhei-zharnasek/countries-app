@@ -4,14 +4,11 @@ export default `
             name
             native
             code
-            currency
-            phone
             continent {
                 name
                 code
             }
             languages {
-                code
                 name
                 native
             }

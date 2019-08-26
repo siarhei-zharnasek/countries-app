@@ -7,6 +7,7 @@ const StyledLink = styled(Link)`
     overflow: hidden;
     text-overflow: ellipsis;
     margin-left: ${props => props.nested ? "15px" : 0};
+    font-size: ${props => props.nested ? "14px" : "inherit"};
 `;
 
 export default StyledLink;

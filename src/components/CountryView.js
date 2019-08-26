@@ -5,6 +5,9 @@ import { useQuery } from '@apollo/react-hooks';
 // queries
 import { getSingleCountryQuery } from '../queries';
 
+// components
+import Error from './Error';
+
 const StyledTitle = styled.span`
     font-size: 36px;
     margin-top: 0;
@@ -24,8 +27,14 @@ const CountryView = ({ match }) => {
         );
     }
 
+    if (error) {
+        return <Error />;
+    }
+
     if (!country) {
-        return null;
+        return (
+            <div>There is no such country. Try again.</div>
+        );
     }
 
     const { name, native, currency, phone } = country;
